@@ -10,7 +10,7 @@ jobs:
       - name: Checkout repo
         uses: actions/checkout@v4
       - name: Build Website with Parcel        
-        run: npx parcel build "./src/homepage.html" --dist-dir "./dev" --public-url "./"
+        run: npx parcel build "./src/index.html" --dist-dir "./dev" --public-url "./"
       - name: Upload build artifacts
         uses: actions/upload-pages-artifact@v3
         with: 
@@ -24,8 +24,7 @@ jobs:
       id-token: write
     runs-on: ubuntu-latest
     steps:
-      - name: Copy homepage.html to index.html
-        run: cp ../../src/homepage.html ../../src/index.html
+      
       - name: Deploy artifacts on GH Pages        
         uses: actions/deploy-pages@v4
         with:
