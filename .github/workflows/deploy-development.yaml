@@ -1,0 +1,32 @@
+name: pr-validation-workflow
+on:
+  push:
+    branches:
+      - develop
+jobs:
+  build-job:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repo
+        uses: actions/checkout@v4
+      - name: Build Website with Parcel        
+        run: npx parcel build "./src/homepage.html" --dist-dir "./dev" --public-url "./"
+      - name: Upload build artifacts
+        uses: actions/upload-pages-artifact@v3
+        with: 
+          path: "./dev"
+          name: "develop-artifact" 
+  deploy-job:
+    needs: "build-job"
+    environment: "develop-env"
+    permissions:
+      pages: write
+      id-token: write
+    runs-on: ubuntu-latest
+    steps:
+      
+      - name: Deploy artifacts on GH Pages        
+        uses: actions/deploy-pages@v4
+        with:
+          artifact_name: "develop-artifact"
+          token: ${{github.token}}
