@@ -20,4 +20,4 @@ jobs:
       - name: Install Parcel
         run: npm install --save-dev parcel
       - name: Build Job         
-        run: npm parcel build "src/index.html" --dist-dir "./dev" "./"
+        run: npm parcel build "src/homepage.html" --dist-dir "./dev" "./"
