@@ -24,7 +24,8 @@ jobs:
       id-token: write
     runs-on: ubuntu-latest
     steps:
-      
+      - name: Copy homepage.html to index.html
+        run: cp homepage.html index.html
       - name: Deploy artifacts on GH Pages        
         uses: actions/deploy-pages@v4
         with:
