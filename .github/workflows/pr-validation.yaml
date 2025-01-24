@@ -12,10 +12,10 @@ jobs:
       - name: Install HTMLHint
         run: npm install --save-dev htmlhint
       - name: Lint all HTML files
-        run: npm htmlhint "**/*.html"
+        run: npx htmlhint "**/*.html"
       - name: Install StyleLint
         run: npm install --save-dev stylelint
       - name: Lint all CSS files
-        run: npm stylelint "**/*.css"
+        run: npx stylelint "**/*.css"
       - name: Build Job         
         run: npx parcel build "src/homepage.html" --dist-dir "./dev" "./"
